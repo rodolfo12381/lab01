@@ -16,11 +16,11 @@ const graphQLClient = new GraphQLClient(endpoint, {
   },
 });
 
-app.post("/query", (req, res) => {
+app.get("/query/:id", (req, res) => {
 
     let query = ''
 
-    switch (req.body.query) {
+      switch (req.params.id) {
 
     case "1":
         query = `{
@@ -129,9 +129,11 @@ app.post("/query", (req, res) => {
           }`
       break;
   }
+  
   graphQLClient.request(query).then((data) => {
-        console.log(JSON.stringify(data))
-        res.json(JSON.stringify(data))
+        res.json((data))
+  }).catch((err) => {
+    console.log(err)
   });
 });
 

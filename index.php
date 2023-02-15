@@ -17,7 +17,7 @@
                 <form id="frmDados" action="action.php" method="POST">
                 <div class="form-group">
                     <input type="hidden" id="path" name="data[acao]" value="buscar-dados">
-                    <select  class="form-control" name="data[query]" required>
+                    <select  class="form-control" name="data[id]" required>
                         <option value=""> -- SELECIONE -- </option>
                         <option value="1">Query 1</option>
                         <option value="2">Query 2</option>

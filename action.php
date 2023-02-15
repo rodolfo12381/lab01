@@ -4,14 +4,15 @@ try {
     switch($_POST['data']['acao']) {
 
         case 'buscar-dados':
-            $handle = curl_init('http://localhost:8080/query');
-            $data = ['query' => $_POST['data']['query']];
-            $corpo = json_encode($data);
-            curl_setopt($handle, CURLOPT_POSTFIELDS,$corpo);
+            $id = $_POST['data']['id'] ;
+            $handle = curl_init("http://localhost:8080/query/{$id}");
             curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
             $response = curl_exec($handle);
             curl_close($handle);
-            echo json_decode($response, true);
+            $response = str_replace('{"search":{"edges":[',"",$response);
+            $array = explode("},",$response);
+            echo "<pre><div><h1>Resultado:</h1><a href='index.php'>Voltar</a></div><hr>";
+            print_r($array);
             break;
         default:
             echo 'Erro';
