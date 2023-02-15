@@ -56,7 +56,7 @@ app.post("/query", (req, res) => {
           }`
       break;
 
-    case "3": //timeout
+    case "3": 
         query = `{
             search(query: "stars:>10000 sort:stars-desc", type: REPOSITORY, first: 10) {
               edges {
@@ -106,7 +106,7 @@ app.post("/query", (req, res) => {
             }
           }`
       break;
-    case "6": //erro da issue open e closed
+    case "6":
         query = `{
             search(query: "stars:>10000 sort:stars-desc", type: REPOSITORY, first: 10) {
               edges {
